@@ -36,7 +36,7 @@ namespace Esercizio13
     class Program
     {
         static void Main(string[] args)
-        {   
+        {
             int[] numeroDiCarta = new int[16];
             int somma = 0;
 
@@ -75,7 +75,7 @@ namespace Esercizio13
             {
                 if (i % 2 == 0)
                 {
-                    somma += numeroDiCarta[i +1 ];
+                    somma += numeroDiCarta[i + 1];
 
                 }
             }
@@ -106,10 +106,10 @@ namespace Esercizio13
                 if (i % 2 == 1)
                 {
                     numeroDiCarta[i - 1] = numeroDiCarta[i - 1] * 2;
-                
-                    if(numeroDiCarta[i - 1] > 9)
+
+                    if (numeroDiCarta[i - 1] > 9)
                     {
-                        numeroDiCarta[i - 1] = ((numeroDiCarta[i -1]) - 9);
+                        numeroDiCarta[i - 1] = ((numeroDiCarta[i - 1]) - 9);
                     }
                 }
             }
@@ -125,13 +125,19 @@ namespace Esercizio13
 
         private static void InserisciNumero(ref int[] numeroDiCarta)
         {
-            Console.WriteLine("Inserire numero di carta:");
+            int cifra;
 
+            Console.WriteLine("Inserire numero di carta:");
             for (int i = 0; i < 16; i++)
             {
-                numeroDiCarta[i] = int.Parse(Console.ReadLine());
-            }
+                while (!int.TryParse(Console.ReadLine(), out cifra) || cifra < 0 || cifra > 10)
+                {
 
+                    Console.WriteLine("Puoi inserire solo interi maggiori di 0 e minori di 10:");
+
+                }
+                numeroDiCarta[i] = cifra;
+            }
         }
     }
 }
